@@ -151,9 +151,7 @@ onEnroll(selectedCourseId, enrollTime);
           </div>
 
           <DialogFooter>
-            <Button type="submit" disabled={!selectedCourseId}>
-              ยืนยันการลงทะเบียน
-            </Button>
+            <Button type="submit">ยืนยัน</Button>
           </DialogFooter>
         </form>
       </DialogContent>

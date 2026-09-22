@@ -32,8 +32,7 @@ export default function EnrollmentPage() {
   return (
     <div className="space-y-4 p-4">
       <div className="flex items-center justify-between gap-4">
-        {/* หัวข้อ + ข้อมูลนักศึกษา อยู่แถวเดียวกัน */}
-        <div className="flex items-baseline gap-3">
+        <div className="flex flex-col">
           <h1 className="text-xl font-semibold">รายวิชาทั้งหมด</h1>
           <span className="text-sm text-muted-foreground font-medium">
             ธนวิชญ์ ชัยดา (680610678)
