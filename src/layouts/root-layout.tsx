@@ -13,7 +13,7 @@ export default function RootLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
+      <SidebarInset className="flex min-h-screen flex-col">
         <header className="flex h-14 items-center justify-between gap-2 border-b px-4">
           <div className="flex items-center gap-2">
             <SidebarTrigger />
@@ -25,6 +25,11 @@ export default function RootLayout() {
         <main className="flex-1 p-4">
           <Outlet />
         </main>
+        <footer className="border-t border-border bg-card py-4 text-center text-sm text-muted-foreground">
+          <p>
+            จัดทำโดย: ธนวิชญ์ ชัยดา | รหัสนักศึกษา: 680610678
+          </p>
+        </footer>
       </SidebarInset>
     </SidebarProvider>
   );

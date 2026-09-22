@@ -6,6 +6,9 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+
+  SidebarFooter,
+
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
@@ -13,11 +16,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
+import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { currentUser } from "@/lib/mock-data";
+
 const items = [
   { title: "หน้าแรก", url: "/", icon: Home },
   { title: "ลงทะเบียนเรียน", url: "/enrollment", icon: BookOpen },
-  { title: "ตารางเรียน", url: "/schedule", icon: Calendar },
-  { title: "ตั้งค่า", url: "/settings", icon: Settings },
+  //{ title: "ตารางเรียน", url: "/schedule", icon: Calendar },
+  //{ title: "ตั้งค่า", url: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -35,7 +43,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  {/* ✅ แก้ไข: Base UI ใช้ `render={<Link />}` แทน `asChild` */}
+                  {/* ปุ่มเมนูเปลี่ยนหน้า รองรับการไฮไลต์ปุ่มที่กำลังเปิดอยู่ (isActive) */}
                   <SidebarMenuButton
                     isActive={location.pathname === item.url}
                     render={<Link to={item.url} />}
@@ -49,6 +57,34 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="p-0">
+        
+        <Separator />
+
+        <div className="flex items-center justify-between p-3">
+          <div className="flex items-center gap-3">
+            
+            <Avatar className="h-9 w-9">
+              <AvatarImage src={currentUser.avatar} alt={currentUser.nickname} />
+              <AvatarFallback className="text-xs font-semibold uppercase">
+                {currentUser.nickname.slice(0, 2)}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col text-left text-sm leading-tight">
+              <span className="truncate font-medium capitalize">
+                {currentUser.nickname}
+              </span>
+            </div>
+          </div>
+          <Badge
+            variant={currentUser.role === "ADMIN" ? "default" : "secondary"}
+            className="text-[10px] font-semibold uppercase tracking-wider"
+          >
+            {currentUser.role}
+          </Badge>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }
