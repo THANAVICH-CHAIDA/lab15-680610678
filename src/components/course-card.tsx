@@ -16,7 +16,7 @@ type CourseCardProps = {
   student?: Student;
   enrolledAt?: string;
   ondrop?: (courseId: string) => void;
-  onCancel: (courseId: string) => void;
+  onCancel?: (courseId: string) => void;
 };
 
 export function CourseCard({ course, student, enrolledAt, ondrop }: CourseCardProps) {
