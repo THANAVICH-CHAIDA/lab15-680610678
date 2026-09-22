@@ -80,7 +80,7 @@ export function RegisterDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button>ลงทะเบียน</Button>
       </DialogTrigger>
 
@@ -104,7 +104,7 @@ export function RegisterDialog({
             <Select
               value={selectedCourseId}
               onValueChange={(value) =>
-                setSelectedCourseId(value)
+                setSelectedCourseId(value ?? "")
               }
             >
               <SelectTrigger
